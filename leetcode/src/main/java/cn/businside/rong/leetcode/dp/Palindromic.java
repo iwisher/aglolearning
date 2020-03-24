@@ -69,9 +69,11 @@ public class Palindromic {
              if (dupSize > 1)
              {
                 //saas, saaaas
-                left = i-2; 
-                right = dup + 1;
+                //i set to dep already
                 i = dup;
+                left = i- dupSize; 
+                right = i + 1;
+                
              }
             
              boolean matched = false;
@@ -84,7 +86,7 @@ public class Palindromic {
 
             if (matched)
             {
-                int matchedSize = right - left -2;
+                int matchedSize = right - left - 1;
                 
                 if (matchedSize  > currentSize )
                 {
@@ -261,6 +263,17 @@ public class Palindromic {
 
         for (long i = 0; i < 1; i++) {
 
+            getPalindromicSimple("baaaab");
+            getPalindromic("baaaab");
+
+            getPalindromicSimple("gvksadvgzzzuogzcukskjxbohofdimkmyqypyuexypwnjlrfpbtkqynghjtlllgtlcsibfdktzhcfuallqlonbsgyyvvyarvaxmchtyrtkgekkmhejwvsuumhcfcyncgeqtltfmhtlsfswaqpmwpjwgvksvazhwyrzwhyjjdbphhjcmurdcgtbvpkhbkpirhysrpcrntetacyfvgjivhaxgpqhbjahruuejdmaghoaquhiafjqaionbrjbjksxaezosxqmncejjptcksnoq");
+            getPalindromic("esbtzjaaijqkgmtaajpsdfiqtvxsgfvijpxrvxgfumsuprzlyvhclgkhccmcnquukivlpnjlfteljvykbddtrpmxzcrdqinsnlsteonhcegtkoszzonkwjevlasgjlcquzuhdmmkhfniozhuphcfkeobturbuoefhmtgcvhlsezvkpgfebbdbhiuwdcftenihseorykdguoqotqyscwymtjejpdzqepjkadtftzwebxwyuqwyeegwxhroaaymusddwnjkvsvrwwsmolmidoybsotaqufhepinkkxicvzrgbgsarmizugbvtzfxghkhthzpuetufqvigmyhmlsgfaaqmmlblxbqxpluhaawqkdluwfirfngbhdkjjyfsxglsnakskcbsyafqpwmwmoxjwlhjduayqyzmpkmrjhbqyhongfdxmuwaqgjkcpatgbrqdllbzodnrifvhcfvgbixbwywanivsdjnbrgskyifgvksadvgzzzuogzcukskjxbohofdimkmyqypyuexypwnjlrfpbtkqyngvxjcwvngmilgwbpcsseoywetatfjijsbcekaixvqreelnlmdonknmxerjjhvmqiztsgjkijjtcyetuygqgsikxctvpxrqtuhxreidhwcklkkjayvqdzqqapgdqaapefzjfngdvjsiiivnkfimqkkucltgavwlakcfyhnpgmqxgfyjziliyqhugphhjtlllgtlcsibfdktzhcfuallqlonbsgyyvvyarvaxmchtyrtkgekkmhejwvsuumhcfcyncgeqtltfmhtlsfswaqpmwpjwgvksvazhwyrzwhyjjdbphhjcmurdcgtbvpkhbkpirhysrpcrntetacyfvgjivhaxgpqhbjahruuejdmaghoaquhiafjqaionbrjbjksxaezosxqmncejjptcksnoq");
+
+            getPalindromicSimple("abacab");
+            getPalindromic("abacab");
+
+           
+
             getPalindromicSimple("ababababababa");
             getPalindromic("ababababababa");
 
@@ -306,8 +319,7 @@ public class Palindromic {
              * System.out.println(getPalindromic("babad");
              */
 
-            getPalindromicSimple("baaaab");
-            getPalindromic("baaaab");
+            
 
             getPalindromicSimple("aaa");
             getPalindromic("aaa");
