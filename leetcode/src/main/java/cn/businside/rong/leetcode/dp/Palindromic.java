@@ -32,9 +32,73 @@ public class Palindromic {
     }
     
     public static String getPalindromicSimple(String target) {
-        
-        
-        return null;
+     
+        //long s = System.currentTimeMillis();
+        if (target == null || target.equals(""))
+            return target;
+
+        int len = target.length();
+        int currentSize = 1;
+
+        int finalStart = 0, finalEnd = 1;
+
+        for (int i =1; i< target.length(); i++)
+        {
+            //Already scan the whole string OR the left string is small than half of current size.
+            if (currentSize == len ||
+                    ((len - i) < (currentSize/2 -1)))
+                break;
+            //Handle duplciate chars
+            //case, aaaaa
+            int dup = i -1;
+            while (dup + 1 < len && target.charAt(dup) == target.charAt(dup+1))
+            {
+                dup++;
+            }
+
+            int dupSize = dup -i + 2;
+            if (dupSize > currentSize)
+            {
+                currentSize = dupSize;
+                finalStart = i-1;
+                finalEnd = dup + 1;
+            }
+
+             //check two sides to match 
+             int left = i- 1, right=i+1;
+             if (dupSize > 1)
+             {
+                //saas, saaaas
+                left = i-2; 
+                right = dup + 1;
+                i = dup;
+             }
+            
+             boolean matched = false;
+             while( left>=0 && right < len && target.charAt(left) == target.charAt(right))
+             {
+                 left--;
+                 right++;
+                 matched = true;
+             }
+
+            if (matched)
+            {
+                int matchedSize = right - left -2;
+                
+                if (matchedSize  > currentSize )
+                {
+                    currentSize = matchedSize;
+                    finalStart = left+1;
+                    finalEnd = right;
+                }
+            }
+
+             
+            
+        }
+        System.out.println(target.substring(finalStart, finalEnd));
+        return target.substring(finalStart, finalEnd);
 
     }
 
@@ -196,13 +260,25 @@ public class Palindromic {
     public static void main(String[] args) {
 
         for (long i = 0; i < 1; i++) {
+
+            getPalindromicSimple("ababababababa");
+            getPalindromic("ababababababa");
+
+            getPalindromicSimple("abb");
+            getPalindromic("abb");
+
+            getPalindromicSimple("aaaabaaa");
+            getPalindromic("aaaabaaa");
+
+
+            
+
             getPalindromicSimple(
                     "iptmykvjanwiihepqhzupneckpzomgvzmyoybzfynybpfybngttozprjbupciuinpzryritfmyxyppxigitnemanreexcpwscvcwddnfjswgprabdggbgcillisyoskdodzlpbltefiz");
             getPalindromic(
                     "iptmykvjanwiihepqhzupneckpzomgvzmyoybzfynybpfybngttozprjbupciuinpzryritfmyxyppxigitnemanreexcpwscvcwddnfjswgprabdggbgcillisyoskdodzlpbltefiz");
 
-            getPalindromicSimple("ababababababa");
-            getPalindromic("ababababababa");
+            
             getPalindromicSimple("tattarrattat");
             getPalindromic("tattarrattat");
             /*
