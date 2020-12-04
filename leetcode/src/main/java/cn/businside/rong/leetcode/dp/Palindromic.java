@@ -215,7 +215,8 @@ public class Palindromic {
 
                     }
 
-                }
+                }else
+                    break;
             }
 
         }
